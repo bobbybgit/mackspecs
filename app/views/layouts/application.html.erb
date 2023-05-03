@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mackintosh Garment Specifications</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  </head>
+
+  <body>
+  <div class="sidebar">
+    <%= image_tag "Mackintosh---Logo.png", :class => "header_logo" %>
+    <div class="sidebar_content">
+      <div class="header_links">
+        <%= link_to "Specs", specs_path, data:{turbo_frame: "content"}, :class => "strip_link header_link" %>
+        <%= link_to "Parts", parts_path, data:{turbo_frame: "content"}, :class => "strip_link header_link" %>
+        <%= link_to "Minutes", new_spec_path, data:{turbo_frame: "content"}, :class => "strip_link header_link" %>
+      </div>
+    </div>
+  </div>
+  
+  <div class="main_window">
+    <div class="header_bar">
+      <div class="search_container">
+        Search:
+        <%= form_with url: specs_path, :class => "header_search_form" do |f| %>
+          <%= f.text_field :search_string, :class => "header_search", :autocomplete => "spec_search" %>
+          <div class="icon search_end">search</div>
+        <% end %>
+      </div>
+    </div>
+    <%= turbo_frame_tag :content do %>
+      <%= yield %>
+    <% end %>
+  </div>
+  </body>
+</html>
