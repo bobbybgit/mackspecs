@@ -8,14 +8,106 @@
 :root {
   --main: #EEEEEE;
   --mainDark: #DDDDDD;
+  --mainLight: #FEFEFE;
   --mainText: #172926;
   --secondary: #172926;
-  --secondaryLight: #394B48;
   --secondaryText: #FFFFFF;
-  --tertiary: #F7F0DE; 
-  --tertiaryDark: #96A5AA; 
-  --tertiaryText: #FFFFFF;
+  --highlight: #5C80CB;
+  --highlightLight: #7EA2ED;
+  --highlightText: #FFFFFF;
   
+}
+
+a{
+  color: var(--highlight)
+}
+
+.card{
+  border-radius: 10px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+h2{
+  color: var(--mainText);
+  margin-bottom: 20px;
+}
+
+.devise_frame{
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex:0;
+  max-height: min-content;
+  background-color: var(--mainLight);
+}
+
+
+input[type=submit]{
+  padding: 5px 10px;
+  background-color: var(--highlight);
+  text-decoration: none;
+  color: var(--highlightText);
+  border: none;
+  border-radius: 3px;
+  flex: 0;
+}
+
+input[type=submit]:hover{
+  background-color: var(--highlightLight);
+}
+
+input[type=email], input[type=password]{
+  border: none;
+  background-color: var(--mainDark);
+  border-radius: 20px;
+  height: 1.75rem;
+  width: 250px;
+  padding-left: 10px;  
+}
+
+input[type=checkbox]{
+  margin: 2px 5px 0 5px;
+  flex: 0;
+}
+
+
+
+.field input[type=email], .field input[type=password] {
+  margin: 5px;
+}
+
+.field label{
+  margin-top: 10px;
+}
+
+.check_field label{
+  margin-top: 0;
+}
+
+.field{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.check_field{
+  flex-direction: row;
+}
+
+
+.actions{
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+input:checked{
+  accent-color: var(--highlight);
+  color: var(--highlightText);
 }
 
 .icon{
@@ -75,16 +167,18 @@ h1{
   align-items: flex-start;
   justify-content: flex-start;
   position: relative;
-  min-height: 100vh;
+  min-height: 80vh;
 }
 
 #content{
+  margin-top: 57px;
   flex: 1;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   width: 100%;
   min-height: 100%;
+  max-height: 100%;
   flex-direction: column;
 }
 
