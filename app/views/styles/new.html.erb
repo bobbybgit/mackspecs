@@ -1,0 +1,11 @@
+<%= turbo_frame_tag :content do %>
+  <h1>New style</h1>
+
+  <%= render "form", style: @style %>
+
+  <br>
+
+  <div>
+    <%= link_to "Back to specs", specs_path, data:{:turbo_frame => "content"} %>
+  </div>
+<% end %>

@@ -1,0 +1,16 @@
+<div class="sidebar">
+  <%= link_to root_path, :class => "strip_link" do %>
+    <%= image_tag "Mackintosh---Logo.png", :class => "header_logo" %>
+  <% end %>
+  <div class="sidebar_content">
+    <div class="header_links">
+      <%= link_to "Specifications", specs_path, data:{:turbo_frame => "content"}, :class => "strip_link header_link" %>
+      <div class="indented_menu"><i class="icon white">arrow_right</i>
+        <%= link_to "Pieces", pieces_path, data:{:turbo_frame => "content"}, :class => "strip_link header_link" %>
+          
+      </div>
+      <%= link_to "Timings", styles_path, data:{:turbo_frame => "content"}, :class => "strip_link header_link" %>
+      <%= link_to "Sequencing", styles_path, data:{:turbo_frame => "content"}, :class => "strip_link header_link" %>
+    </div>
+  </div>
+</div>

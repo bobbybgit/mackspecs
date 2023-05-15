@@ -1,14 +1,24 @@
-<p style="color: green"><%= notice %></p>
+<%= turbo_frame_tag :content do %>
 
-<h1>Specs</h1>
+  <div class="content_window">
 
-<div id="specs">
-  <% @specs.each do |spec| %>
-    <%= render spec %>
-    <p>
-      <%= link_to "Show this spec", spec %>
-    </p>
-  <% end %>
-</div>
+    <h1>Specifications</h1><br>
 
-<%= link_to "New spec", new_spec_path %>
+    <%= form_with url: spec_table_path, :class => "in_line_form", :method => :get, data:{:turbo_frame => "spec_table", :controller => "autosub", autosave_delay_value: '1000'} do |form| %>
+      Filter: 
+      <%= form.text_field :style_filter, data:{"action" => "keyup->autosub#save"} %>
+    <% end %>
+
+   
+
+    <%= turbo_frame_tag :spec_table, src: spec_table_path do %>
+      <div class="single4"></div>
+    <% end %>
+
+  </div> <!-- content_window -->  
+
+   <%= button_to new_style_path, :class => "new_button new_spec_button", :method => :get, data:{turbo_frame: "content"} do %>
+      <i class="icon">add</i>&nbsp;New Style
+    <% end %> <!-- new style button --> 
+
+<% end %> <!-- content turbo frame -->

@@ -1,6 +1,6 @@
 require "test_helper"
 
-class SpecsControllerTest < ActionDispatch::IntegrationTest
+class PieceTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

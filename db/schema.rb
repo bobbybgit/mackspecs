@@ -10,27 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_27_152959) do
-  create_table "parts", force: :cascade do |t|
+ActiveRecord::Schema[7.0].define(version: 2023_05_15_084407) do
+  create_table "pieces", force: :cascade do |t|
     t.string "name"
-    t.integer "position_id", null: false
-    t.string "sub_position"
-    t.integer "minutes"
+    t.string "area"
+    t.string "sub_area"
+    t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["position_id"], name: "index_parts_on_position_id"
   end
 
-  create_table "specs", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "style_id", null: false
-    t.date "last_edited"
-    t.date "last_exported"
-    t.date "last_printed"
+  create_table "styles", force: :cascade do |t|
+    t.string "name"
+    t.string "style_num"
+    t.string "style_image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["style_id"], name: "index_specs_on_style_id"
-    t.index ["user_id"], name: "index_specs_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -45,7 +40,4 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_27_152959) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "parts", "positions"
-  add_foreign_key "specs", "styles"
-  add_foreign_key "specs", "users"
 end
