@@ -38,7 +38,7 @@ class StylesController < ApplicationController
   def update
     respond_to do |format|
       if @style.update(style_params)
-        format.html { redirect_to style_url(@style), notice: "Style was successfully updated." }
+        format.html { redirect_to style_url(@style), data:{:turbo_frame => "content"}, notice: "Style was successfully updated." }
         format.json { render :show, status: :ok, location: @style }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +52,7 @@ class StylesController < ApplicationController
     @style.destroy
 
     respond_to do |format|
-      format.html { redirect_to styles_url, notice: "Style was successfully destroyed." }
+      format.html { redirect_to specs_url, notice: "Style was successfully destroyed.", data:{:turbo_frame => "content"} }
       format.json { head :no_content }
     end
   end

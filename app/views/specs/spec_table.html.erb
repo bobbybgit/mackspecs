@@ -3,12 +3,14 @@
     <tr>
       <th>Style Number</th>
       <th>Style Name</th>
+      <th>Brand</th>
       <th>Created on</th>
     </tr>
     <% @specs.each do |spec| %>
         <tr onclick="location.href='<%= style_path(spec.id) %>'">
           <td><%= spec.style_num %></td>
           <td><%= spec.name %></td>
+          <td><%= spec.brand %></td>
           <td><%= spec.created_at %></td>
         </tr>
     <% end %>
