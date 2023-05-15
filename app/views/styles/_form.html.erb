@@ -23,7 +23,7 @@
 
   <div class="form_section">
     <%= form.label :brand, style: "display: block" %>
-    <%= form.select :brand, options_for_select(Style.brands, @style.brand) %>
+    <%= form.select :brand, grouped_options_for_select(Style.grouped_brands_for_select,@style.brand) %>
   </div>
 
   <div class="form_section">

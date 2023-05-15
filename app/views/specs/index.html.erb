@@ -2,11 +2,11 @@
 
   <div class="content_window">
 
-    <h1>Specifications</h1><br>
+    <h1>Specifications</h1>
 
     <%= form_with url: spec_table_path, :class => "in_line_form", :method => :get, data:{:turbo_frame => "spec_table", :controller => "autosub", autosave_delay_value: '1000'} do |form| %>
       Filter: 
-      <%= form.text_field :style_filter, data:{"action" => "keyup->autosub#save"} %>
+      <%= form.text_field :style_filter, :autocomplete => "Off", data:{"action" => "keyup->autosub#save"} %>
     <% end %>
 
    
