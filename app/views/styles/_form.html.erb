@@ -12,13 +12,18 @@
   <% end %>
   
   <div class="form_section">
-    <%= form.label :style_num, style: "display: block" %>
+    <%= form.label :style_num, "Style Number", style: "display: block" %>
     <%= form.text_field :style_num %>
   </div>
 
   <div class="form_section">
     <%= form.label :name, style: "display: block" %>
     <%= form.text_field :name %>
+  </div>
+
+  <div class="form_section">
+    <%= form.label :brand, style: "display: block" %>
+    <%= form.select :brand, options_for_select(Style.brands, @style.brand) %>
   </div>
 
   <div class="form_section">

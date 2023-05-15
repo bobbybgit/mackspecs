@@ -64,13 +64,13 @@ input[type=submit]:hover{
   background-color: var(--highlightLight);
 }
 
-input[type=email], input[type=password], input[type="text"]{
+input[type=email], input[type=password], input[type="text"], select{
   border: none;
   background-color: var(--mainDark);
   border-radius: 20px;
   height: 1.75rem;
   width: 300px;
-  padding-left: 10px;  
+  padding: 0 10px;  
 }
 
 .centered_sub{
@@ -439,7 +439,7 @@ td{
   background-color: inherit;
   color: inherit;
   margin: 1px;
-  padding: 5px 5px 5px 10px;
+  padding: 5px 10px;
 }
 
 tr:not(:first-child){
