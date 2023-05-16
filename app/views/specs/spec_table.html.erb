@@ -1,16 +1,18 @@
 <%= turbo_frame_tag :spec_table do %>
   <table class="spec_list">
-    <tr>
-      <th>Style Number</th>
-      <th>Style Name</th>
-      <th>Brand</th>
-      <th>Created on</th>
+    <tr data-controller = "sort">
+      <th data-action = "click->sort#sort" id="style_num">Style Number</th>
+      <th data-action = "click->sort#sort" id="name">Style Name</th>
+      <th data-action = "click->sort#sort" id="brand">Brand</th>
+      <th data-action = "click->sort#sort" id="gender">Gender</th>
+      <th data-action = "click->sort#sort" id="created">Created on</th>
     </tr>
     <% @specs.each do |spec| %>
         <tr onclick="location.href='<%= style_path(spec.id) %>'">
           <td><%= spec.style_num %></td>
           <td><%= spec.name %></td>
           <td><%= Style.interpret_brand(spec.brand) %></td>
+          <td class="center_cell"><%= spec.gender %></td>
           <td class="center_cell"><%= spec.created_at.in_time_zone("GMT").strftime("%m/%d/%y %H:%M") %></td>
         </tr>
     <% end %>

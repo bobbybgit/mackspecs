@@ -1,6 +1,7 @@
 class StylesController < ApplicationController
   before_action :set_style, only: %i[ show edit update destroy ]
-
+  
+  
   # GET /styles or /styles.json
   def index
     @styles = Style.all
@@ -65,6 +66,9 @@ class StylesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def style_params
-      params.require(:style).permit(:name, :style_num, :style_image, :brand)
+      params.require(:style).permit(:name, :style_num, :style_image, :brand, :gender)
     end
+
+    
+
 end

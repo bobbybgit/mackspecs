@@ -27,6 +27,11 @@
   </div>
 
   <div class="form_section">
+    <%= form.label :gender, style: "display: block" %>
+    <%= form.select :gender, options_for_select(['Gents','Ladies','Unisex'],@style.gender) %>
+  </div>
+
+  <div class="form_section">
     <%= form.label :style_image, style: "display: block" %>
     <p class="explanation">Image will resize and then crop to 300x300px, for best results please use a square image</p>
     <div class="file_field_section">

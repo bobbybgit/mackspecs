@@ -1,8 +1,11 @@
 class Style < ApplicationRecord
-  
+  before_save :set_formats
+  validates :style_num, uniqueness:true
+  validate :style_num_format
+
 
   mount_uploader :style_image, ImageUploader
-  scope :style_search, -> (search_string){where('name LIKE ? OR style_num LIKE ? OR brand LIKE ?', "%#{search_string}%", "%#{search_string}%", "%#{search_string}%")}
+  scope :style_search, -> (search_string){where('name LIKE ? OR style_num LIKE ?', "%#{search_string}%", "%#{search_string}%")}
 
   def self.brands
     ['Kiko Kostadinov', 'Aether', 'The Workers Club','This Thing of Ours','The Power For The People x','Nigel Cabourn','Carhartt']
@@ -18,6 +21,16 @@ class Style < ApplicationRecord
 
   def self.interpret_brand(id)
     id[0] == "P" ? Style.priority_brands[id[1..-1].to_i] : Style.brands[id.to_i]
+  end
+
+  def set_formats
+    self.style_num = self.style_num.upcase
+    self.name = self.name.titleize
+  end
+  
+  def style_num_format
+    style_num_error_text = "Style Number should be three letters followed by four numbers in the format XXP0000"
+    errors.add(:style_num, style_num_error_text ) if !style_num.match(/[a-zA-Z]{2}[pP]\d{4}$/i) 
   end
 
 end
