@@ -3,10 +3,13 @@
 
   <%= render @style %>
 
-  <div>
-    <%= link_to "Edit this style", edit_style_path(@style), data:{:turbo_frame => "content"} %> |
-    <%= link_to "Back to styles", specs_path, data:{:turbo_frame => "content"} %>
-
-    <%= button_to "Destroy this style", @style, method: :delete %>
+  <div class="horizontal_button_group">
+    <%= button_to edit_style_path(@style), data:{:turbo_frame => "content"} do %> 
+      <i class="icon">edit</i>&nbsp; Edit
+    <% end %>
+    <%= button_to @style, method: :delete, :class=> "delete_button" do %>
+      <i class="icon">delete</i>&nbsp; Delete
+    <% end %>
   </div>
+  <%= link_to "Back to styles", specs_path, data:{:turbo_frame => "content"} %>
 <% end %>

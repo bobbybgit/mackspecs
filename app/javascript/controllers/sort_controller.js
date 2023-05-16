@@ -24,6 +24,7 @@ export default class extends Controller {
     }else{
       console.log(`changing column`)
       column.value = sorter
+      direction.value = "down"
     }
 
     const new_event = new CustomEvent("sub-all");
