@@ -10,7 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_16_082441) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_16_151159) do
+  create_table "instructions", force: :cascade do |t|
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "piece_constructions", force: :cascade do |t|
+    t.integer "piece_id", null: false
+    t.integer "instruction_id", null: false
+    t.integer "topstitch_rows"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["instruction_id"], name: "index_piece_constructions_on_instruction_id"
+    t.index ["piece_id"], name: "index_piece_constructions_on_piece_id"
+  end
+
   create_table "pieces", force: :cascade do |t|
     t.string "name"
     t.string "area"
@@ -18,6 +34,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_16_082441) do
     t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "style_specs", force: :cascade do |t|
+    t.integer "style_id", null: false
+    t.integer "piece_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["piece_id"], name: "index_style_specs_on_piece_id"
+    t.index ["style_id"], name: "index_style_specs_on_style_id"
   end
 
   create_table "styles", force: :cascade do |t|
@@ -42,4 +67,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_16_082441) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "piece_constructions", "instructions"
+  add_foreign_key "piece_constructions", "pieces"
+  add_foreign_key "style_specs", "pieces"
+  add_foreign_key "style_specs", "styles"
 end

@@ -1,0 +1,26 @@
+<%= turbo_frame_tag :pieces_table do %>
+  <table class="pieces_list">
+    <tr data-controller = "sort">
+      <th data-action = "click->sort#sort" id="name">Piece Name</th>
+      <th id="topstitch_rows">Topstitch Rows</th>
+      <th id="instructions">Instruction</th>
+      <th data-action = "click->sort#sort" id="created">Created on</th>
+    </tr>
+    <% @pieces.each do |piece| %>
+        <tr onclick="location.href='<%= piece_path(piece.id) %>'">
+          <td><%= piece.name %></td>
+          <td class="center_cell"><%= piece.instructions.first.topstitch_rows %></td>
+          <td><%= piece.instructions.first.description %></td>
+          <td class="center_cell"><%= spec.created_at.in_time_zone("GMT").strftime("%m/%d/%y %H:%M") %></td>
+        </tr>
+        <% piece.instructions[1..piece.instructions.count].each do |instruction| %>
+          <tr>
+            <td></td>
+            <td>instruction.topstitch_rows</td>
+            <td>instruction.description</td>
+            <td></td>
+          </tr>
+        <% end %>
+    <% end %>
+  </table>
+<% end %>

@@ -1,9 +1,15 @@
 Rails.application.routes.draw do
-  resources :pieces
+ 
   get "specs/index", to: "specs#index", as: "specs"
   get "specs/spec_table", to: "specs#spec_table", as: "spec_table"
+  get "pieces/pieces_table", to: "pieces#pieces_table", as: "pieces_table"
   get "specs/:id", to: "specs#show", as: "spec"
   get "pages/dash", to: "pages#dash", as: "dash"
+
+  resources :piece_constructions
+  resources :style_specs
+  resources :instructions
+  resources :pieces
   
 
   resources :styles

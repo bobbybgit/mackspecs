@@ -1,16 +1,26 @@
-<%= turbo_frame_tag :content do%>
-  <p style="color: green"><%= notice %></p>
+<%= turbo_frame_tag :content do %>
 
-  <h1>Pieces</h1>
+  <div class="content_window">
 
-  <div id="pieces">
-    <% @pieces.each do |piece| %>
-      <%= render piece %>
-      <p>
-        <%= link_to "Show this piece", piece %>
-      </p>
+    <h1>Pieces</h1>
+
+    <%= form_with url: pieces_table_path, :class => "in_line_form", :method => :get, data:{:turbo_frame => "pieces_table", :controller => "autosub", autosave_delay_value: '1000', "action" => "sub-all@window->autosub#save"} do |form| %>
+      Filter: 
+      <%= form.text_field :pieces_filter, :autocomplete => "Off", data:{"action" => "keyup->autosub#save"} %>
+      <%= form.hidden_field :column %>
+      <%= form.hidden_field :direction %>
     <% end %>
-  </div>
 
-  <%= link_to "New piece", new_piece_path %>
-<% end %>
+   
+
+    <%= turbo_frame_tag :pieces_table, src: pieces_table_path do %>
+      <div class="single4"></div>
+    <% end %>
+
+  </div> <!-- content_window -->  
+
+   <%= button_to new_piece_path, :class => "new_button new_spec_button", :method => :get, data:{turbo_frame: "content"} do %>
+      <i class="icon">add</i>&nbsp;New Piece
+    <% end %> <!-- new style button --> 
+
+<% end %> <!-- content turbo frame -->

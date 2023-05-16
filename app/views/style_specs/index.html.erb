@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Style specs</h1>
+
+<div id="style_specs">
+  <% @style_specs.each do |style_spec| %>
+    <%= render style_spec %>
+    <p>
+      <%= link_to "Show this style spec", style_spec %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New style spec", new_style_spec_path %>

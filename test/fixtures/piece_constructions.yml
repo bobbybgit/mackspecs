@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  piece: one
+  instruction: one
+  topstitch_rows: 1
+
+two:
+  piece: two
+  instruction: two
+  topstitch_rows: 1

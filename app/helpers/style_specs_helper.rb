@@ -1,0 +1,2 @@
+module StyleSpecsHelper
+end

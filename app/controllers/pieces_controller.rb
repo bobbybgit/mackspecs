@@ -1,9 +1,14 @@
 class PiecesController < ApplicationController
   before_action :set_piece, only: %i[ show edit update destroy ]
+  before_action :filter_pieces, only: %i[pieces_table]
 
   # GET /pieces or /pieces.json
   def index
     @pieces = Piece.all
+  end
+
+  def pieces_table
+
   end
 
   # GET /pieces/1 or /pieces/1.json
@@ -66,5 +71,21 @@ class PiecesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def piece_params
       params.require(:piece).permit(:name, :area, :sub_area, :image)
+    end
+
+    def filter_pieces
+    
+      case params[:column]
+      when "created"
+        @pieces = search_pieces.order(:created_at)
+      else
+        @pieces = search_pieces.order(:name)
+        pp params[:column]
+      end
+      @pieces = @pieces.reverse if params[:direction] == "up" 
+    end
+  
+    def search_pieces
+      params[:pieces_filter].present? ? Piece.all.style_search(params[:pieces_filter]) : Piece.all
     end
 end

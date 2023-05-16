@@ -1,0 +1,27 @@
+<%= form_with(model: style_spec) do |form| %>
+  <% if style_spec.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(style_spec.errors.count, "error") %> prohibited this style_spec from being saved:</h2>
+
+      <ul>
+        <% style_spec.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :style_id, style: "display: block" %>
+    <%= form.text_field :style_id %>
+  </div>
+
+  <div>
+    <%= form.label :piece_id, style: "display: block" %>
+    <%= form.text_field :piece_id %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

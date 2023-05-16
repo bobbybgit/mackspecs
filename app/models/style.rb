@@ -3,6 +3,9 @@ class Style < ApplicationRecord
   validates :style_num, uniqueness:true
   validate :style_num_format
 
+  has_many :style_specs
+  has_many :pieces, :through => :style_specs
+
 
   mount_uploader :style_image, ImageUploader
   scope :style_search, -> (search_string){where('name LIKE ? OR style_num LIKE ?', "%#{search_string}%", "%#{search_string}%")}
